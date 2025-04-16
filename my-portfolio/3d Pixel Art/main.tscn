@@ -1,0 +1,147 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8fd6ykycuo5y"]
+
+[ext_resource type="Script" path="res://3d Pixel Art/scripts/spin.gd" id="1_a4uln"]
+[ext_resource type="PackedScene" uid="uid://cnd7i1kucwpvq" path="res://3d Pixel Art/models/icosphere.glb" id="1_c7amy"]
+[ext_resource type="Script" path="res://3d Pixel Art/DirectionalLight3D.gd" id="2_fvtpq"]
+[ext_resource type="Shader" path="res://3d Pixel Art/outline.gdshader" id="5_fgad3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_andoa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_c02bc"]
+sky_material = SubResource("ProceduralSkyMaterial_andoa")
+
+[sub_resource type="Environment" id="Environment_j45us"]
+background_mode = 1
+background_color = Color(0.980392, 0.976471, 0.756863, 1)
+sky = SubResource("Sky_c02bc")
+ambient_light_source = 2
+ambient_light_color = Color(0.713726, 0.713726, 0.713726, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4grfa"]
+albedo_color = Color(1, 0.701961, 0.435294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_frvq1"]
+material = SubResource("StandardMaterial3D_4grfa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7liq"]
+albedo_color = Color(0.690196, 0.0901961, 0.415686, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kohbq"]
+albedo_color = Color(1, 0.701961, 0.435294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aj53r"]
+material = SubResource("StandardMaterial3D_kohbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp00u"]
+albedo_color = Color(1, 0.701961, 0.435294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8smba"]
+material = SubResource("StandardMaterial3D_qp00u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6itp"]
+render_priority = 0
+shader = ExtResource("5_fgad3")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.5
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.48835, -0.440254, -0.753452)
+
+[sub_resource type="QuadMesh" id="QuadMesh_egxnj"]
+material = SubResource("ShaderMaterial_i6itp")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="Main" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Level" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Level"]
+environment = SubResource("Environment_j45us")
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.825877, -0.238708, 0.479871, 0, 0.895055, 0.443336, -0.535292, -0.368277, 0.740321, 0, 10, 0)
+script = ExtResource("1_a4uln")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Level/Node3D"]
+transform = Transform3D(1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+shadow_enabled = true
+script = ExtResource("2_fvtpq")
+
+[node name="Box5" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, 0, 0.761222, 0)
+mesh = SubResource("BoxMesh_frvq1")
+
+[node name="icosphere" parent="SubViewportContainer/SubViewport/Level/Box5" instance=ExtResource("1_c7amy")]
+transform = Transform3D(0.167627, 0, 0.279175, 0, 0.333333, 0, -0.279175, 0, 0.167627, 0, 1.05812, 0)
+script = ExtResource("1_a4uln")
+speed = -0.5
+
+[node name="Icosphere" parent="SubViewportContainer/SubViewport/Level/Box5/icosphere" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_i7liq")
+
+[node name="Floor" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_aj53r")
+
+[node name="Box" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.25, 0, 0, 0, 3, 0, 0, 0, 8, -4.62155, 1.49997, 0)
+mesh = SubResource("BoxMesh_8smba")
+skeleton = NodePath("../../../..")
+
+[node name="Box2" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.95382, 0.510714, -2.02617)
+mesh = SubResource("BoxMesh_8smba")
+skeleton = NodePath("../../../..")
+
+[node name="Box3" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.25, 0, 0, 0, 3, 0, 0, 0, 1, 4.30372, 1.5, -3.2772)
+mesh = SubResource("BoxMesh_8smba")
+skeleton = NodePath("../../../..")
+
+[node name="Box6" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.25, 0, 0, 0, 3, 0, 0, 0, 1, 4.30372, 1.5, -0.273855)
+mesh = SubResource("BoxMesh_8smba")
+skeleton = NodePath("../../../..")
+
+[node name="Box4" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.85616, 0.969551, 1.97168)
+mesh = SubResource("BoxMesh_8smba")
+skeleton = NodePath("../../../..")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939693, 0.34202, -0.707107, -0.241845, 0.664463, 7.40855, 5.12198, 7.54981)
+projection = 1
+current = true
+size = 10.0
+far = 97.06
+
+[node name="PostProcessing" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.582154, 0, -0.813079, -0.303241, 0.92785, -0.217117, 0.754415, 0.372954, 0.540151, 1.43051e-06, 7.27177e-06, -11.3814)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_egxnj")
+skeleton = NodePath("../..")
+
+[editable path="SubViewportContainer/SubViewport/Level/Box5/icosphere"]

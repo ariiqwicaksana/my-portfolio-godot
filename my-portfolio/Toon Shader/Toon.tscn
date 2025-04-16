@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bilcnbihq05te"]
+
+[ext_resource type="Material" uid="uid://cccxikfsh25m5" path="res://Toon Shader/toon_shader_material.tres" id="1_s5qme"]
+[ext_resource type="Material" uid="uid://diimapechuafh" path="res://Toon Shader/outline_shader_material.tres" id="2_ba53a"]
+[ext_resource type="Script" path="res://Interior Parallax Mapping/freecamera.gd" id="2_hd6rb"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cpgmh"]
+
+[sub_resource type="Sky" id="Sky_f17tk"]
+sky_material = SubResource("PhysicalSkyMaterial_cpgmh")
+
+[sub_resource type="Environment" id="Environment_qcm4p"]
+background_mode = 2
+sky = SubResource("Sky_f17tk")
+
+[sub_resource type="SphereMesh" id="SphereMesh_j4dqo"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ellqh"]
+size = Vector2(2, 2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qcm4p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.836626, 0.039897, -0.546319, -0.545129, 0.0372515, 0.837524, 0.0537659, 0.998509, -0.00941653, -2.41562, 2.10326, -1.05353)
+shadow_enabled = true
+
+[node name="My Sphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j4dqo")
+surface_material_override/0 = ExtResource("1_s5qme")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.64659)
+script = ExtResource("2_hd6rb")
+
+[node name="Outline" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50934)
+mesh = SubResource("QuadMesh_ellqh")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_ba53a")
