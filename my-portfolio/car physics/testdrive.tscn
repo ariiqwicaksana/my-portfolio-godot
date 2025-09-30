@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://crdh5yf1f30ii"]
 
-[ext_resource type="Script" path="res://car physics/camera.gd" id="1_33t5q"]
-[ext_resource type="Script" path="res://car physics/vehicle_controllergd.gd" id="1_pe40b"]
+[ext_resource type="Script" uid="uid://clfsrxdsvkit0" path="res://car physics/camera.gd" id="1_33t5q"]
+[ext_resource type="Script" uid="uid://bu3rhx4jn8jw8" path="res://car physics/vehicle_controllergd.gd" id="1_pe40b"]
 [ext_resource type="PackedScene" uid="uid://ct5k8oq0r58l3" path="res://car physics/car.tscn" id="2_hywrh"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_xqh0g"]

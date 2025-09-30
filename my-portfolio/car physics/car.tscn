@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=4 uid="uid://ct5k8oq0r58l3"]
 
-[ext_resource type="Script" path="res://car physics/vehicle.gd" id="1_2v7xn"]
+[ext_resource type="Script" uid="uid://cu7ysopi3eevw" path="res://car physics/vehicle.gd" id="1_2v7xn"]
 [ext_resource type="Texture2D" uid="uid://cdij26f6y3oak" path="res://car physics/stylized_mustang_stylized_mustang_color.png" id="1_kfi1t"]
 [ext_resource type="Texture2D" uid="uid://cmk1wqh4qmfmk" path="res://car physics/stylized_mustang_stylized_mustang_pallete.png" id="2_oysrq"]
-[ext_resource type="Script" path="res://car physics/wheel.gd" id="3_un6to"]
+[ext_resource type="Script" uid="uid://batbi35c7tggu" path="res://car physics/wheel.gd" id="3_un6to"]
 
 [sub_resource type="Curve" id="Curve_lchpn"]
 _data = [Vector2(0.0267176, 0.30566), 0.0, 0.0, 0, 0, Vector2(0.522901, 0.622641), 0.0, 0.0, 0, 0, Vector2(0.973282, 0.381132), 0.0, 0.0, 0, 0]

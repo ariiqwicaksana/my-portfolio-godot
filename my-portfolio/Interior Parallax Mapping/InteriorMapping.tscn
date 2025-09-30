@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bkecrd11qyjyy"]
 
-[ext_resource type="Shader" path="res://Interior Parallax Mapping/interior_mapping.gdshader" id="1_8yy0d"]
+[ext_resource type="Shader" uid="uid://bm4g1uj86bssb" path="res://Interior Parallax Mapping/interior_mapping.gdshader" id="1_8yy0d"]
 [ext_resource type="Texture2D" uid="uid://434o4153xgu6" path="res://Interior Parallax Mapping/rooms_emit.png" id="2_gixlo"]
 [ext_resource type="Texture2D" uid="uid://gdvs723x5kl5" path="res://Interior Parallax Mapping/rooms_depth.png" id="3_vrrcl"]
-[ext_resource type="Script" path="res://Interior Parallax Mapping/freecamera.gd" id="4_o5r7p"]
+[ext_resource type="Script" uid="uid://piqekbl48440" path="res://Interior Parallax Mapping/freecamera.gd" id="4_o5r7p"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_p8ae7"]
 
@@ -19,74 +19,74 @@ sky = SubResource("Sky_f17tk")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w37ke"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 2.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vpek3"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 5.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mpj4d"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 4.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5toti"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 9.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l0ynt"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 6.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpmpd"]
 render_priority = 0
 shader = ExtResource("1_8yy0d")
+shader_parameter/roomTexture = ExtResource("3_vrrcl")
+shader_parameter/roomEmit = ExtResource("2_gixlo")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/emission = Color(1, 1, 1, 1)
 shader_parameter/emissionEnergy = 1.0
 shader_parameter/roomTiles = Vector2i(3, 2)
 shader_parameter/depthRemap = Vector2(3, 3)
 shader_parameter/seed = 7.0
-shader_parameter/roomTexture = ExtResource("3_vrrcl")
-shader_parameter/roomEmit = ExtResource("2_gixlo")
 
 [node name="Node3D" type="Node3D"]
 

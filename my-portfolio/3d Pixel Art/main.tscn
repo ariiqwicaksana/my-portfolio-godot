@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://b8fd6ykycuo5y"]
 
-[ext_resource type="Script" path="res://3d Pixel Art/scripts/spin.gd" id="1_a4uln"]
+[ext_resource type="Script" uid="uid://cvha6gx5t1gql" path="res://3d Pixel Art/scripts/spin.gd" id="1_a4uln"]
 [ext_resource type="PackedScene" uid="uid://cnd7i1kucwpvq" path="res://3d Pixel Art/models/icosphere.glb" id="1_c7amy"]
-[ext_resource type="Script" path="res://3d Pixel Art/DirectionalLight3D.gd" id="2_fvtpq"]
-[ext_resource type="Shader" path="res://3d Pixel Art/outline.gdshader" id="5_fgad3"]
+[ext_resource type="Script" uid="uid://ca2jcyaoya12w" path="res://3d Pixel Art/DirectionalLight3D.gd" id="2_fvtpq"]
+[ext_resource type="Shader" uid="uid://dkk48y7l5naco" path="res://3d Pixel Art/outline.gdshader" id="5_fgad3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_andoa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
